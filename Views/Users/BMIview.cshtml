@@ -1,0 +1,24 @@
+﻿@model addingFieldsLogin.ViewModels.BMIuserViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BMI View</title>
+</head>
+<body>
+    <div> 
+        <h1>BMI view</h1>
+        <div>@Model.user_vm.EmailLogin</div>
+        <div>@Model.user_vm.weight</div>
+        <div>@Model.user_vm.height</div>
+        <p></p>
+        <div>@Model.bmi_vm</div>
+        <div>@Model.message_vm</div>
+    </div>
+</body>
+</html>

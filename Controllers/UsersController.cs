@@ -27,7 +27,7 @@ namespace addingFieldsLogin.Controllers
 
             return View(list); 
         }
-        public ActionResult UserDetails(int id)
+       /* public ActionResult UserDetails(int id)
         {
             var fromdb = context.userDatabase.SingleOrDefault(c => c.id == id);
             if(fromdb == null)
@@ -50,10 +50,9 @@ namespace addingFieldsLogin.Controllers
             }
 
             return Content("The BMR for " + fromdb.EmailLogin + "  is " + BMR + ". " + message); 
-        }
+        } */ 
         public ActionResult Calcform()
         {
-
             var vm = new UserGenderViewModel
             {
                 genderList = context.genderDatabase.ToList(),
@@ -66,6 +65,7 @@ namespace addingFieldsLogin.Controllers
         [HttpPost]
         public ActionResult formsubmit(User user)
         {
+
             if (!ModelState.IsValid)
             {
                 var vm = new UserGenderViewModel
@@ -80,7 +80,38 @@ namespace addingFieldsLogin.Controllers
             context.userDatabase.Add(user);
             context.SaveChanges();
 
-            return RedirectToAction("ListUsers", "Users");  
+            var userid = user.id;
+
+            var userfromdb = context.userDatabase.SingleOrDefault(c => c.id == userid);
+
+            if (userfromdb == null)
+            {
+                return HttpNotFound();
+            }
+
+            double BMR;
+            string message;
+
+            if (userfromdb.GenderId == 1)
+            {
+                BMR = 88.362 + (13.38 * userfromdb.weight) + (4.8 * userfromdb.height) - (5.67 * userfromdb.age);
+                message = "This is specifically calculated for men ";
+            }
+            else
+            {
+                BMR = 447.59 + (9.24 * userfromdb.weight) + (3.09 * userfromdb.height) - (4.33 * userfromdb.age);
+                message = "This is specifically calculated for women ";
+
+            }
+            var Vm = new BMIuserViewModel
+            {
+                user_vm = userfromdb,
+                message_vm = message,
+                bmi_vm = BMR
+            }; 
+
+            return View("BMIview", Vm); 
+            // return RedirectToAction("ListUsers", "Users");  
         }
        
     }

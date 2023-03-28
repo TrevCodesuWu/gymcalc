@@ -199,6 +199,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BMIuserViewModel.cs" />
     <Compile Include="ViewModels\CalcSumViewModel.cs" />
     <Compile Include="ViewModels\UserGenderViewModel.cs" />
   </ItemGroup>
@@ -262,6 +263,7 @@
     <Content Include="Views\Gym\FormData.cshtml" />
     <Content Include="Views\Users\Calcform.cshtml" />
     <Content Include="Views\Users\ListUsers.cshtml" />
+    <Content Include="Views\Users\BMIview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
