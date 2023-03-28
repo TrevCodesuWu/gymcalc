@@ -1,0 +1,31 @@
+﻿@model addingFieldsLogin.ViewModels.weightheightViewModel
+
+@{
+    ViewBag.Title = "FormData";
+}
+
+<h2>FormData</h2>
+
+@using (Html.BeginForm("Index", "Gym"))
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(c => c.age)
+        @Html.TextBoxFor(c => c.age, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.weight)
+        @Html.TextBoxFor(c => c.weight, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.height)
+        @Html.TextBoxFor(c => c.height, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        Male
+        @Html.RadioButtonFor(model => model.gender, "Male")
+        Female
+        @Html.RadioButtonFor(model => model.gender, "Female")
+    </div>
+    <button class="btn btn-primary" type="submit">Calculate</button>
+}

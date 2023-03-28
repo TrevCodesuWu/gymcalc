@@ -1,0 +1,32 @@
+﻿@model addingFieldsLogin.ViewModels.UserGenderViewModel
+
+@{
+    ViewBag.Title = "Calcform";
+}
+
+<h2>Calcform</h2>
+
+@using (Html.BeginForm("formsubmit","Users"))
+{
+  
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(c => c.user.age)
+        @Html.TextBoxFor(c => c.user.age, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.user.weight)
+        @Html.TextBoxFor(c => c.user.weight, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.user.height)
+        @Html.TextBoxFor(c => c.user.height, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.user.GenderId)
+        @Html.DropDownListFor(c => c.user.GenderId, new SelectList(Model.genderList,"id","gender"), "Select Gender",new {@class="form-control"})
+    </div>
+
+    <button class="btn btn-primary" type="submit">Calculate</button>
+
+}

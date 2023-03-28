@@ -1,0 +1,35 @@
+﻿@model IEnumerable<addingFieldsLogin.Models.User>
+@{
+    ViewBag.Title = "ListUsers";
+}
+
+<h2>User log </h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>User Email</th>
+            <th>Log Date</th>
+            <th>Log Time</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th>Weight</th>
+        </tr>
+    </thead>
+
+@foreach(var c in Model)
+            {
+               if(User.Identity.Name == c.EmailLogin)
+                { 
+                    <tbody>
+                        <tr>
+                            <td>@Html.ActionLink(c.EmailLogin,"UserDetails","Users", new { id =c.id},null)</td>
+                            <td>@c.log.ToShortDateString()</td>
+                            <td>@c.log.ToShortTimeString()</td>
+                            <td>@c.age</td>
+                            <td>@c.height <b>cm</b></td>
+                            <td>@c.weight <b>kg</b></td>
+                        </tr>
+                    </tbody>
+                }
+            }
+</table>

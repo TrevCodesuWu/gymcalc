@@ -1,0 +1,29 @@
+﻿@model addingFieldsLogin.ViewModels.CalcSumViewModel
+@*@model IEnumerable<addingFieldsLogin.Models.RegisterViewModel>
+*@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+   
+    <div>
+        @foreach(var c in Model.em)
+                {
+                    if(c == User.Identity.Name)
+                    {
+                        <p>@c</p>
+                    }
+                }
+    </div>
+
+</body>
+</html>
