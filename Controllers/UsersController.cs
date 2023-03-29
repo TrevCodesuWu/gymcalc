@@ -93,6 +93,7 @@ namespace addingFieldsLogin.Controllers
             string message;
 
             if (userfromdb.GenderId == 1)
+
             {
                 BMR = 88.362 + (13.38 * userfromdb.weight) + (4.8 * userfromdb.height) - (5.67 * userfromdb.age);
                 message = "This is specifically calculated for men ";
