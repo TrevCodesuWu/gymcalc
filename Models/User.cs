@@ -8,7 +8,7 @@ namespace addingFieldsLogin.Models
 {
     public class User
     {
-        [Key]
+        [Key] //29  - 300 400 150 150
         public int id { get; set; }
         public string EmailLogin { get; set; } // stores it using login email in the database , hidden in form view displays in logs 
 

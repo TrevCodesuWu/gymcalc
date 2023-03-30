@@ -83,6 +83,9 @@ C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLo
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.Migrations.usermodel.resources
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.Migrations.genderadded.resources
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.Migrations.popgender.resources
+C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.Migrations.calorieuser_activity.resources
+C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.Migrations.popActivity.resources
+C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.Migrations.changedmodel.resources
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.csproj.GenerateResource.cache
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.csproj.CoreCompileInputs.cache
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.csproj.CopyComplete

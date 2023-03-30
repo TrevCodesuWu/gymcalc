@@ -89,18 +89,22 @@ namespace addingFieldsLogin.Controllers
                 return HttpNotFound();
             }
 
-            double BMR;
+            double BMI;
             string message;
 
             if (userfromdb.GenderId == 1)
 
             {
-                BMR = 88.362 + (13.38 * userfromdb.weight) + (4.8 * userfromdb.height) - (5.67 * userfromdb.age);
+                BMI = (userfromdb.height / 100 * userfromdb.height / 100);
+                BMI = userfromdb.weight / BMI;
+
                 message = "This is specifically calculated for men ";
             }
             else
             {
-                BMR = 447.59 + (9.24 * userfromdb.weight) + (3.09 * userfromdb.height) - (4.33 * userfromdb.age);
+                BMI = (userfromdb.height / 100 * userfromdb.height / 100);
+                BMI = userfromdb.weight / BMI; 
+
                 message = "This is specifically calculated for women ";
 
             }
@@ -108,7 +112,7 @@ namespace addingFieldsLogin.Controllers
             {
                 user_vm = userfromdb,
                 message_vm = message,
-                bmi_vm = BMR
+                bmi_vm = BMI
             }; 
 
             return View("BMIview", Vm); 

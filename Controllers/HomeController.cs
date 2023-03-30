@@ -9,6 +9,11 @@ namespace addingFieldsLogin.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        public ActionResult CalculatorHome()
+        {
+
+            return View(); 
+        }
         public ActionResult Index()
         {
             return View();

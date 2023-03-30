@@ -1,0 +1,45 @@
+﻿@model IEnumerable<addingFieldsLogin.Models.CalorieUser>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BMI View</title>
+</head>
+<body>
+    <h2>User log </h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>User Email</th>
+                <th>Log Date</th>
+                <th>Log Time</th>
+                <th>Age</th>
+                <th>Height</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+
+        @foreach (var c in Model)
+        {
+            if (User.Identity.Name == c.EmailLogin)
+            {
+                <tbody>
+                    <tr>
+                        <td>@c.EmailLogin</td>
+                        <td>@c.log.ToShortDateString()</td>
+                        <td>@c.log.ToShortTimeString()</td>
+                        <td>@c.age</td>
+                        <td>@c.height <b>cm</b></td>
+                        <td>@c.weight <b>kg</b></td>
+                    </tr>
+                </tbody>
+            }
+        }
+    </table>
+</body>
+</html>

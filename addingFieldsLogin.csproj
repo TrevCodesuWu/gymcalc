@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalorieController.cs" />
     <Compile Include="Controllers\GymController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -191,16 +192,32 @@
     <Compile Include="Migrations\202303251427011_popgender.Designer.cs">
       <DependentUpon>202303251427011_popgender.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303291343267_calorieuser_activity.cs" />
+    <Compile Include="Migrations\202303291343267_calorieuser_activity.Designer.cs">
+      <DependentUpon>202303291343267_calorieuser_activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291344529_popActivity.cs" />
+    <Compile Include="Migrations\202303291344529_popActivity.Designer.cs">
+      <DependentUpon>202303291344529_popActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291631480_changedmodel.cs" />
+    <Compile Include="Migrations\202303291631480_changedmodel.Designer.cs">
+      <DependentUpon>202303291631480_changedmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CalorieUser.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BMIuserViewModel.cs" />
     <Compile Include="ViewModels\CalcSumViewModel.cs" />
+    <Compile Include="ViewModels\CalorieGenderActivityViewModel.cs" />
+    <Compile Include="ViewModels\CalorieValuesViewModel.cs" />
     <Compile Include="ViewModels\UserGenderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +225,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CalculatorHomeCSS.css" />
+    <Content Include="Content\nosciptCSS.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -224,6 +243,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\breakpoints.min.js" />
+    <Content Include="Scripts\js\browser.min.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\js\jquery.scrollex.min.js" />
+    <Content Include="Scripts\js\jquery.scrolly.min.js" />
+    <Content Include="Scripts\js\main.js" />
+    <Content Include="Scripts\js\util.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -264,6 +290,10 @@
     <Content Include="Views\Users\Calcform.cshtml" />
     <Content Include="Views\Users\ListUsers.cshtml" />
     <Content Include="Views\Users\BMIview.cshtml" />
+    <Content Include="Views\Calorie\ListCUsers.cshtml" />
+    <Content Include="Views\Calorie\CalcCform.cshtml" />
+    <Content Include="Views\Calorie\CalorieView.cshtml" />
+    <Content Include="Views\Home\CalculatorHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,6 +323,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303251427011_popgender.resx">
       <DependentUpon>202303251427011_popgender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291343267_calorieuser_activity.resx">
+      <DependentUpon>202303291343267_calorieuser_activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291344529_popActivity.resx">
+      <DependentUpon>202303291344529_popActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291631480_changedmodel.resx">
+      <DependentUpon>202303291631480_changedmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
