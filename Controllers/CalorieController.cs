@@ -9,7 +9,7 @@ using addingFieldsLogin.ViewModels;
 
 namespace addingFieldsLogin.Controllers
 {
-    [AllowAnonymous]
+  
     public class CalorieController : Controller
     {
 
@@ -56,12 +56,12 @@ namespace addingFieldsLogin.Controllers
             }
             calorieuser.log = DateTime.Now;
             calorieuser.EmailLogin = User.Identity.Name;
-            context.calorieDatabase.Add(calorieuser);
-            context.SaveChanges();
-
+            
+            /*
             var userid = calorieuser.id;
 
-            var userfromdb = context.calorieDatabase.SingleOrDefault(c => c.id == userid);
+            var userfromdb = context.calorieDatabase.SingleOrDefault(c => c.id == userid); */
+            var userfromdb = calorieuser; 
 
             if (userfromdb == null)
             {
@@ -148,6 +148,11 @@ namespace addingFieldsLogin.Controllers
                 }
 
             }
+            calorieuser.caloriessum = calorieNeeded; 
+
+            context.calorieDatabase.Add(calorieuser);
+            context.SaveChanges();
+
             var Vm = new CalorieValuesViewModel
             {
                 calorieuser = userfromdb,

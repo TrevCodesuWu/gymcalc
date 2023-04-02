@@ -9,7 +9,12 @@ namespace addingFieldsLogin.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        public ActionResult CalculatorHome()
+        public ActionResult MainHome() //The main home page goes in this view 
+        {
+
+            return View();
+        }
+        public ActionResult CalculatorHome() //Calculator home page goes here in this view 
         {
 
             return View(); 
@@ -18,19 +23,14 @@ namespace addingFieldsLogin.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
+        public ActionResult Result() // This is the view for the message box in the calculator home page 
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(); 
         }
-
-        public ActionResult Contact()
+        public ActionResult testing()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(); 
         }
     }
 }

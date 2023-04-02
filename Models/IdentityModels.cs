@@ -35,9 +35,11 @@ namespace addingFieldsLogin.Models
 
         public DbSet<CalorieUser> calorieDatabase { get; set; }
         public DbSet<UserActivity> activityDatabase { get; set; }
+        public DbSet<IdealWeight> idealweightDatabase { get; set; }
 
 
-         
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

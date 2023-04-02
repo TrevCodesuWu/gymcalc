@@ -75,7 +75,8 @@ namespace addingFieldsLogin.Controllers
                 }; 
                 return View("Calcform", vm);
             }
-            user.log = DateTime.Now;
+            user.log = DateTime.Now ;
+
             user.EmailLogin = User.Identity.Name; 
             context.userDatabase.Add(user);
             context.SaveChanges();
@@ -103,11 +104,11 @@ namespace addingFieldsLogin.Controllers
             else
             {
                 BMI = (userfromdb.height / 100 * userfromdb.height / 100);
-                BMI = userfromdb.weight / BMI; 
+                BMI = userfromdb.weight / BMI;
 
-                message = "This is specifically calculated for women ";
-
+                message = "This is specifically calculated for women "; 
             }
+
             var Vm = new BMIuserViewModel
             {
                 user_vm = userfromdb,
@@ -118,6 +119,14 @@ namespace addingFieldsLogin.Controllers
             return View("BMIview", Vm); 
             // return RedirectToAction("ListUsers", "Users");  
         }
-       
+
+        public ActionResult GetData()
+        {
+            var listUsers = context.userDatabase.Where(c => c.EmailLogin == User.Identity.Name).ToList(); 
+          
+
+            return Json(new { data = listUsers}, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

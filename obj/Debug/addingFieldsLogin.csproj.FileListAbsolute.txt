@@ -91,3 +91,5 @@ C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLo
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.csproj.CopyComplete
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.dll
 C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.pdb
+C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.Migrations.calorieSumField.resources
+C:\Users\Trevlin Naicker\source\repos\addingFieldsLogin\obj\Debug\addingFieldsLogin.Migrations.addedmodelidealweight.resources

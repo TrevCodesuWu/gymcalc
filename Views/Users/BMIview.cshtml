@@ -1,27 +1,51 @@
 ﻿@model addingFieldsLogin.ViewModels.BMIuserViewModel
+
 @{
-    Layout = null;
+    ViewBag.Title = "BMIview1";
 }
 
-<!DOCTYPE html>
+<table id="maindiv" class="table table-bordered table-responsive table-wrapper">
+    <thead>
+        <tr>
+          <th>Details of User</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Email : @Model.user_vm.EmailLogin</td>
+        </tr>
+        <tr>
+            
+            <td>BMI : @Model.bmi_vm</td>
+            
+        </tr>
+        <tr>
+            <td>Message : @Model.message_vm</td>
+        </tr>
+    </tbody>
+</table>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>BMI View</title>
-</head>
-<body>
-    <div> 
-        <h1>BMI view</h1>
-        <div>@Model.user_vm.EmailLogin</div>
-        <div>@Model.user_vm.weight</div>
-        <div>@Model.user_vm.height</div>
-        <p></p>
-        <div>@Model.bmi_vm</div>
-        <div>@Model.message_vm</div>
-    </div>
-    <div>
-        @Html.ActionLink("Log", "ListUsers", "Users")
-    </div>
-</body>
-</html>
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#maindiv').DataTable({                            //Remember to change the table name or it wont work //
+                paging: false,
+                "info": false,
+                searching: false,
+                dom: 'Bfrtip',
+                buttons: [
+                    { extend: 'copy', className: 'btn btn-primary glyphicon glyphicon-duplicate' },
+                    { extend: 'csv', className: 'btn btn-primary glyphicon glyphicon-save-file' },
+                    { extend: 'excel', className: 'btn btn-primary glyphicon glyphicon-list-alt' },
+                    { extend: 'pdf', className: 'btn btn-primary glyphicon glyphicon-file' },
+                    { extend: 'print', className: 'btn btn-primary glyphicon glyphicon-print' }
+                ]
+            });
+
+        });
+    </script>
+
+
+}

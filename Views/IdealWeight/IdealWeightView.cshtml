@@ -1,0 +1,21 @@
+﻿@model addingFieldsLogin.ViewModels.IdealWeightSumViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IdealWeightView</title>
+</head>
+<body>
+    <div> 
+        @Model.idealweight.EmailLogin
+        @Model.idealweight.height
+        @Model.Sum
+    </div>
+    @Html.ActionLink("Log","listidealweight","idealweight")
+</body>
+</html>

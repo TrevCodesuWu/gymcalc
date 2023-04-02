@@ -9,18 +9,34 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>BMI View</title>
+    <style>
+        *{
+            margin:0px; 
+            padding:0px; 
+            box-sizing:border-box; 
+            font-family: Leelawadee; 
+        }
+        #CalorieTable {
+            width: 100%;
+        }
+        th {
+            font-size:20px; 
+            
+        }
+    </style>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <h2>User log </h2>
-    <table class="table table-bordered">
+    <h2>User Calorie Log</h2>
+    <table id="CalorieTable" class="table table-responsive table-hover table-bordered">
         <thead>
-            <tr>
+            <tr class="HeadRow">
                 <th>User Email</th>
-                <th>Log Date</th>
-                <th>Log Time</th>
                 <th>Age</th>
                 <th>Height</th>
                 <th>Weight</th>
+                <th>Calorie Sum</th>
             </tr>
         </thead>
 
@@ -31,11 +47,10 @@
                 <tbody>
                     <tr>
                         <td>@c.EmailLogin</td>
-                        <td>@c.log.ToShortDateString()</td>
-                        <td>@c.log.ToShortTimeString()</td>
                         <td>@c.age</td>
                         <td>@c.height <b>cm</b></td>
                         <td>@c.weight <b>kg</b></td>
+                        <td>@c.caloriessum</td>
                     </tr>
                 </tbody>
             }

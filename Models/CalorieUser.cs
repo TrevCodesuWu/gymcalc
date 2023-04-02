@@ -26,6 +26,9 @@ namespace addingFieldsLogin.Models
         public Gender gender { get; set; } // nav prop
         [Required]
         public int GenderId { get; set; } // foreign key 
+        [Display(Name ="Calories")]
+        public double? caloriessum { get; set; }
+
 
         public UserActivity useractivity { get; set; } // nav prop
         [Required]

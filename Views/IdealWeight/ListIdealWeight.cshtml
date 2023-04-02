@@ -1,0 +1,74 @@
+﻿@model IEnumerable<addingFieldsLogin.Models.IdealWeight>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListIdealWeight</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: Leelawadee;
+        }
+
+        #CalorieTable {
+            width: 100%;
+        }
+
+        th {
+            font-size: 20px;
+        }
+
+        .specialheading {
+            background-color: lightgreen;
+        }
+
+        .specialdata {
+            background-color: darkgreen;
+        }
+    </style>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <h2>Ideal weight log</h2>
+    <table id="CalorieTable" class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>User Email</th>
+                <th>Log Date</th>
+                <th>Log Time</th>
+                <th>Age</th>
+                <th>Height</th>
+                <th class="specialheading">Ideal Weight</th>
+            </tr>
+        </thead>
+
+        @foreach (var c in Model)
+        {
+            if (User.Identity.Name == c.EmailLogin)
+            {
+                <tbody>
+                    <tr>
+                        <td>@c.EmailLogin</td>
+                        <td>@c.log.ToShortDateString()</td>
+                        <td>@c.log.ToShortTimeString()</td>
+                        <td>@c.age</td>
+                        <td>@c.height <b>cm</b></td>
+                        <td class="specialdata">@c.weightsum <b>kg</b></td>
+                    </tr>
+                </tbody>
+            }
+        }
+    </table>
+
+    
+</body>
+</html>
