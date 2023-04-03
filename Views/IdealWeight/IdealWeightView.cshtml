@@ -1,21 +1,59 @@
 ﻿@model addingFieldsLogin.ViewModels.IdealWeightSumViewModel
+
 @{
-    Layout = null;
+    ViewBag.Title = "IdealWeightView1";
 }
 
-<!DOCTYPE html>
+<table class="table table-bordered table-condensed" style="display:none;" id="maindiv">
+    <thead>
+        <tr style="width:100%; display:flex; justify-content:center;">
+            <th>Email of user</th>
+            <th>Height of user</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Ideal Weight Calculated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.idealweight.EmailLogin</td>
+            <td>@Model.idealweight.height <b>cm</b></td>
+            <td>@Model.idealweight.log.ToShortDateString()</td>
+            <td>@Model.idealweight.log.ToShortTimeString()</td>
+            <td>@Model.Sum <b>kg</b></td>
+        </tr>
+    </tbody>
+</table>
+<hr/>
+<h2>IdealWeightView</h2>
+<div>
+    @Model.idealweight.EmailLogin
+    @Model.idealweight.height
+    @Model.Sum
+</div>
+<hr/>
+@Html.ActionLink("Log", "listidealweight", "idealweight")
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>IdealWeightView</title>
-</head>
-<body>
-    <div> 
-        @Model.idealweight.EmailLogin
-        @Model.idealweight.height
-        @Model.Sum
-    </div>
-    @Html.ActionLink("Log","listidealweight","idealweight")
-</body>
-</html>
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#maindiv').DataTable({                            //Remember to change the table name or it wont work //
+                paging: false,
+                "info": false,
+                searching: false,
+                dom: 'Bfrtip',
+                buttons: [
+                    { extend: 'copy', className: 'btn btn-secondary glyphicon glyphicon-duplicate' },
+                    { extend: 'csv', className: 'btn btn-primary glyphicon glyphicon-save-file' },
+                    { extend: 'excel', className: 'btn btn-success glyphicon glyphicon-list-alt' },
+                    { extend: 'pdf', className: 'btn btn-danger glyphicon glyphicon-file' },
+                    { extend: 'print', className: 'btn btn-warning glyphicon glyphicon-print' }
+                ]
+            });
+        });
+    </script>
+
+
+}

@@ -4,10 +4,141 @@
     ViewBag.Title = "BMIview1";
 }
 
-<table id="maindiv" class="table table-bordered table-responsive table-wrapper">
+@{
+    var className1 = Model.bmi_vm > 0 && Model.bmi_vm <= 18.5 ? "checked_underweight" : null;
+    var className2 = Model.bmi_vm >18.5 && Model.bmi_vm <= 25 ? "checked_normal" : null;
+    var className3 = Model.bmi_vm > 25 && Model.bmi_vm <= 30 ? "checked_overweight" : null;
+    var className4 = Model.bmi_vm > 30 && Model.bmi_vm <= 100 ? "checked_obesity" : null;
+
+}
+<style>
+    .checked_underweight {
+        animation-name: animation1;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+        animation-direction: alternate; 
+    }
+    .checked_normal {
+        animation-name: animation1;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+        animation-direction: alternate;
+    }
+    .checked_overweight {
+        animation-name: animation1;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+        animation-direction: alternate; @*Use !important to override a class attribute *@
+    }
+    .checked_obesity {
+        animation-name: animation1;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+        animation-direction: alternate;
+    }
+
+   @@keyframes animation1 {
+        from {
+            border:2px solid white; 
+            color:white; 
+             }
+       to {
+           color:white; 
+           border:2px solid white; 
+           transform: scale(1.14); 
+       }
+    }
+    *{
+        margin:0px ; 
+        padding:0px; 
+        box-sizing:border-box; 
+    }
+    .rangeBMI {
+       width: 100%; 
+       margin-top:40px; 
+       margin-bottom:30px; 
+       height: 50px; 
+       background-color: yellow; 
+       border: 1px solid black ;
+       display:flex; flex-direction:row; 
+       font-family:Leelawadee; 
+    }
+    .underweight {
+        width:37%; 
+        height:50px; 
+        background-color:lightcoral; 
+        display:flex; justify-content:space-between; align-items:center; 
+    }
+    .normal {
+        width: 25%;
+        height: 50px;
+        background-color: green;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .overweight {
+        width: 13%;
+        height: 50px;
+        background-color: yellow;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .obesity {
+        width: 25%;
+        height: 50px;
+        background-color: darkred;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+       
+    }
+    .sizes {
+        color:white; 
+        font-size:18px; 
+        font-family:'Trebuchet MS'; 
+    }
+    
+</style>
+
+<div class="rangeBMI">
+
+    <div class="underweight @className1">
+        <p class="sizes">0</p>
+        Underweight
+        <p class="sizes">18.5</p>
+    </div>
+    <div class="normal @className2">
+        <p class="sizes"></p>
+        Normal
+        <p class="sizes">25</p>
+
+    </div>
+    <div class="overweight @className3">
+        <p></p>
+        Overweight
+        <p class="sizes">30</p>
+
+    </div>
+    <div class="obesity @className4">
+        <p></p>
+        Obesity
+        <p class="sizes">40</p>
+    </div>
+
+</div>
+
+<div>
+    @Model.user_vm.EmailLogin
+    @Model.bmi_vm
+    @Model.message_vm
+</div>
+
+<table id="maindiv" style="display:none;" class="table table-bordered table-responsive table-wrapper">
     <thead>
         <tr>
-          <th>Details of User</th>
+            <th>Details of User</th>
         </tr>
     </thead>
     <tbody>
@@ -15,9 +146,9 @@
             <td>Email : @Model.user_vm.EmailLogin</td>
         </tr>
         <tr>
-            
+
             <td>BMI : @Model.bmi_vm</td>
-            
+
         </tr>
         <tr>
             <td>Message : @Model.message_vm</td>
@@ -36,14 +167,13 @@
                 searching: false,
                 dom: 'Bfrtip',
                 buttons: [
-                    { extend: 'copy', className: 'btn btn-primary glyphicon glyphicon-duplicate' },
+                    { extend: 'copy', className: 'btn btn-secondary glyphicon glyphicon-duplicate' },
                     { extend: 'csv', className: 'btn btn-primary glyphicon glyphicon-save-file' },
-                    { extend: 'excel', className: 'btn btn-primary glyphicon glyphicon-list-alt' },
-                    { extend: 'pdf', className: 'btn btn-primary glyphicon glyphicon-file' },
-                    { extend: 'print', className: 'btn btn-primary glyphicon glyphicon-print' }
+                    { extend: 'excel', className: 'btn btn-success glyphicon glyphicon-list-alt' },
+                    { extend: 'pdf', className: 'btn btn-danger glyphicon glyphicon-file' },
+                    { extend: 'print', className: 'btn btn-warning glyphicon glyphicon-print' }
                 ]
             });
-
         });
     </script>
 
