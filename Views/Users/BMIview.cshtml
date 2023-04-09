@@ -6,7 +6,7 @@
 
 @{
     var className1 = Model.bmi_vm > 0 && Model.bmi_vm <= 18.5 ? "checked_underweight" : null;
-    var className2 = Model.bmi_vm >18.5 && Model.bmi_vm <= 25 ? "checked_normal" : null;
+    var className2 = Model.bmi_vm > 18.5 && Model.bmi_vm <= 25 ? "checked_normal" : null;
     var className3 = Model.bmi_vm > 25 && Model.bmi_vm <= 30 ? "checked_overweight" : null;
     var className4 = Model.bmi_vm > 30 && Model.bmi_vm <= 100 ? "checked_obesity" : null;
 
@@ -16,7 +16,7 @@
         animation-name: animation1;
         animation-iteration-count: infinite;
         animation-duration: 3s;
-        animation-direction: alternate; 
+        animation-direction: alternate;
     }
     .checked_normal {
         animation-name: animation1;
@@ -38,40 +38,43 @@
     }
 
    @@keyframes animation1 {
-        from {
-            border:2px solid white; 
-            color:white; 
-             }
-       to {
-           color:white; 
-           border:2px solid white; 
-           transform: scale(1.14); 
-       }
+    from {
+        background-color: rgba(0,144, 215);
+        border: 2px solid rgba(36,36,36,0.7);
+        transform: scale(1.01);
+    }
+    to {
+        border: 2px solid rgba(36,36,36,0.7);
+        background-color: rgba(0,144, 215);
+        transform: scale(1.08);
+    }
     }
     *{
-        margin:0px ; 
-        padding:0px; 
-        box-sizing:border-box; 
+        margin:0px ;
+        padding:0px;
+        box-sizing:border-box;
     }
     .rangeBMI {
-       width: 100%; 
-       margin-top:40px; 
-       margin-bottom:30px; 
-       height: 50px; 
-       background-color: yellow; 
-       border: 1px solid black ;
-       display:flex; flex-direction:row; 
-       font-family:Leelawadee; 
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        height: 50px;
+        background-color: yellow;
+        display: flex;
+        flex-direction: row;
+        font-family: 'HP Simplified Jpan';
     }
     .underweight {
-        width:37%; 
-        height:50px; 
-        background-color:lightcoral; 
-        display:flex; justify-content:space-between; align-items:center; 
+        width:37%;
+        color:black;
+        height:50px;
+        background-color:lightcoral;
+        display:flex; justify-content:space-between; align-items:center;
     }
     .normal {
         width: 25%;
         height: 50px;
+        color: black;
         background-color: green;
         display: flex;
         justify-content: space-between;
@@ -81,6 +84,7 @@
         width: 13%;
         height: 50px;
         background-color: yellow;
+        color: black;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -89,38 +93,82 @@
         width: 25%;
         height: 50px;
         background-color: darkred;
+        color: black;
         display: flex;
         justify-content: space-between;
         align-items: center;
-       
     }
     .sizes {
-        color:white; 
-        font-size:18px; 
-        font-family:'Trebuchet MS'; 
+        color: black; 
+        font-size: 18px;
+        font-family: 'HP Simplified Jpan';
     }
-    
+    .divUsers {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        background-image: url('https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/323/323622/bmi-calculator-shows-healthy-weight.jpg?w=1155&h=1541');
+        border: 2px solid black;
+        font-size: 30px;
+        padding: 25px 30px;
+        color: black;
+        font-family: 'HP Simplified Jpan';
+        margin-bottom: 30px;
+    }
+    .divEL {
+        background-color: rgba(36,36,36,0.7);
+        text-align: center;
+        font-family: 'HP Simplified Jpan';
+        font-size: 25px;
+    }
+    .divM {
+        background-color: rgba(36,36,36,0.8);
+        text-align: center;
+        color:white; 
+        word-spacing:3.5px; 
+        padding:10px 120px; 
+        font-family: 'HP Simplified Jpan';
+        font-size: 16px;
+    }
+    .divB {
+        background-color: rgba(0,144, 215);
+        text-align: center;
+        font-size: 50px;
+        font-family: 'HP Simplified Jpan';
+    }
+    .BmiHeading {
+        width: 100%;
+        padding: 5px 0px;
+        color:black; 
+        margin-top:10px; 
+        font-family: 'HP Simplified Jpan';
+        display:flex; justify-content:center; align-items:center; 
+        font-size:24px ;
+    }
 </style>
-
+<div class="BmiHeading">
+    BMI Range
+</div>
 <div class="rangeBMI">
-
     <div class="underweight @className1">
         <p class="sizes">0</p>
         Underweight
         <p class="sizes">18.5</p>
     </div>
+    
     <div class="normal @className2">
         <p class="sizes"></p>
         Normal
         <p class="sizes">25</p>
-
     </div>
+
     <div class="overweight @className3">
         <p></p>
         Overweight
         <p class="sizes">30</p>
-
     </div>
+
     <div class="obesity @className4">
         <p></p>
         Obesity
@@ -129,10 +177,31 @@
 
 </div>
 
-<div>
-    @Model.user_vm.EmailLogin
-    @Model.bmi_vm
-    @Model.message_vm
+<div class="divUsers">
+
+    <div class="divEL">
+        Bmi Result :
+    </div>
+    <div class="divB">
+        @Math.Round(Model.bmi_vm, 2) kg/m^2
+    </div>
+    <div class="divM">
+        <p style="text-decoration: underline; font-size: 17px; ">More Information</p>
+        <p></p>
+        @Model.message_vm
+        <p></p>
+        <p style="text-decoration: underline; font-size: 17px; ">Why is BMI used to measure overweight and obesity?</p>
+        Because calculation requires only height and weight, BMI is an inexpensive and easy tool. To see the formula based on either kilograms and meters or pounds and inches,
+        <p></p>
+        <p style="text-decoration: underline; font-size: 17px; ">What are other ways to assess excess body fatness besides BMI?</p>
+        Other methods to measure body fatness include skinfold thickness measurements (with calipers), underwater weighing, bioelectrical impedance, dual-energy x-ray absorptiometry (DXA), and isotope dilution 1,2,3. However, these methods are not always readily available, and they are either expensive or need to be conducted by highly trained personnel. Furthermore, many of these methods can be difficult to standardize across observers or machines, complicating comparisons across studies and time periods.
+        <p></p>
+        <p style="text-decoration: underline; font-size: 17px;"> Is BMI interpreted the same way for children and teens as it is for adults?</p>
+        BMI is interpreted differently for children and teens, even though it is calculated using the same formula as adult BMI. Children and teen’s BMI need to be age and sex-specific because the amount of body fat changes with age and the amount of body fat differs between girls and boys. The CDC BMI-for-age growth charts take into account these differences and visually show BMI as a percentile ranking. These percentiles were determined using representative data of the US population of 2- to 19-year-olds that was collected in various surveys from 1963-65 to 1988-9411.
+        <p></p>
+        Obesity among 2- to 19-year-olds is defined as a BMI at or above the 95th percentile of children of the same age and sex in this 1963 to 1994 reference population. For example, a 10-year-old boy of average height (56 inches) who weighs 102 pounds would have a BMI of 22.9 kg/m2. This would place the boy in the 95th percentile for BMI – meaning that his BMI is greater than that of 95% of similarly aged boys in this reference population – and he would be considered to have obesity.
+    </div>
+
 </div>
 
 <table id="maindiv" style="display:none;" class="table table-bordered table-responsive table-wrapper">
@@ -147,8 +216,7 @@
         </tr>
         <tr>
 
-            <td>BMI : @Model.bmi_vm</td>
-
+            <td>BMI : @Math.Round(Model.bmi_vm, 2)</td>
         </tr>
         <tr>
             <td>Message : @Model.message_vm</td>

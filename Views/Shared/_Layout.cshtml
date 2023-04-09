@@ -12,7 +12,7 @@
     <link href="~/Content/DataTables/css/buttons.bootstrap4.min.css" rel="stylesheet" />
 
 </head>
-<body>
+<body style="background-color:dimgrey;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -31,11 +31,9 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="background-color:dimgrey; ">
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 

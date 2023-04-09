@@ -99,14 +99,14 @@ namespace addingFieldsLogin.Controllers
                 BMI = (userfromdb.height / 100 * userfromdb.height / 100);
                 BMI = userfromdb.weight / BMI;
 
-                message = "This is specifically calculated for men ";
+                message = "This is specifically calculated for men. BMI can be a screening tool, but it does not diagnose the body fatness or health of an individual. To determine if BMI is a health risk, a healthcare provider performs further assessments. Such assessments include skinfold thickness measurements, evaluations of diet and physical activity.";
             }
             else
             {
                 BMI = (userfromdb.height / 100 * userfromdb.height / 100);
                 BMI = userfromdb.weight / BMI;
 
-                message = "This is specifically calculated for women "; 
+                message = "This is specifically calculated for women. BMI can be a screening tool, but it does not diagnose the body fatness or health of an individual. To determine if BMI is a health risk, a healthcare provider performs further assessments. Such assessments include skinfold thickness measurements, evaluations of diet and physical activity"; 
             }
 
             var Vm = new BMIuserViewModel
