@@ -1,74 +1,100 @@
 ﻿@model IEnumerable<addingFieldsLogin.Models.IdealWeight>
+
 @{
-    Layout = null;
+    ViewBag.Title = "ListIdealWeight1";
 }
 
-<!DOCTYPE html>
+<style>
+    .specialdata {
+        background-color: lightgreen;
+    }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ListIdealWeight</title>
+    .specialheading {
+        background-color: green;
+    }
 
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-            font-family: Leelawadee;
-        }
+    td, th {
+        background-color: silver;
+    }
+</style>
+<h2 style="color:white;">Ideal weight log</h2>
 
-        #CalorieTable {
-            width: 100%;
-        }
-
-        th {
-            font-size: 20px;
-        }
-
-        .specialheading {
-            background-color: lightgreen;
-        }
-
-        .specialdata {
-            background-color: darkgreen;
-        }
-    </style>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <h2>Ideal weight log</h2>
-    <table id="CalorieTable" class="table table-bordered table-hover table-responsive">
-        <thead>
-            <tr>
-                <th>User Email</th>
-                <th>Log Date</th>
-                <th>Log Time</th>
-                <th>Age</th>
-                <th>Height</th>
-                <th class="specialheading">Ideal Weight</th>
-            </tr>
-        </thead>
-
+<table  class="table table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>User Email</th>
+            <th>Log Date</th>
+            <th>Log Time</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th class="specialheading">Ideal Weight</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach (var c in Model)
         {
-            if (User.Identity.Name == c.EmailLogin)
-            {
-                <tbody>
-                    <tr>
-                        <td>@c.EmailLogin</td>
-                        <td>@c.log.ToShortDateString()</td>
-                        <td>@c.log.ToShortTimeString()</td>
-                        <td>@c.age</td>
-                        <td>@c.height <b>cm</b></td>
-                        <td class="specialdata">@c.weightsum <b>kg</b></td>
-                    </tr>
-                </tbody>
-            }
-        }
-    </table>
+        <tr>
+            <td>@c.EmailLogin</td>
+            <td>@c.log.ToShortDateString()</td>
+            <td>@c.log.ToShortTimeString()</td>
+            <td>@c.age</td>
+            <td>@c.height <b>cm</b></td>
+            <td class="specialdata">@c.weightsum <b>kg</b></td>
+            <td>@Html.ActionLink("delete", "delete", "IdealWeight", new { id = c.id }, null)</td>
 
-    
-</body>
-</html>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<table id="maindiv" class="table table-bordered table-condensed" style="display:none;">
+    <thead>
+        <tr>
+            <th>User Email</th>
+            <th>Log Date</th>
+            <th>Log Time</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th class="specialheading">Ideal Weight</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.EmailLogin</td>
+                <td>@c.log.ToShortDateString()</td>
+                <td>@c.log.ToShortTimeString()</td>
+                <td>@c.age</td>
+                <td>@c.height <b>cm</b></td>
+                <td class="specialdata">@c.weightsum <b>kg</b></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#maindiv').DataTable({                            //Remember to change the table name or it wont work//
+                paging: true,
+                "info": false,
+                searching: false,
+                dom: 'Bfrtip',
+                buttons: [
+                    { extend: 'copy', className: 'btn btn-secondary glyphicon glyphicon-duplicate' },
+                    { extend: 'csv', className: 'btn btn-primary glyphicon glyphicon-save-file' },
+                    { extend: 'excel', className: 'btn btn-success glyphicon glyphicon-list-alt' },
+                    { extend: 'pdf', className: 'btn btn-danger glyphicon glyphicon-file' },
+                    { extend: 'print', className: 'btn btn-warning glyphicon glyphicon-print' }
+                ]
+            });
+        });
+    </script>
+
+
+}

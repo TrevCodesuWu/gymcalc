@@ -25,7 +25,7 @@ namespace addingFieldsLogin.Controllers
      
         public ActionResult ListIdealWeight()
         {
-            var dblist = context.idealweightDatabase.Include(c => c.gender).ToList(); 
+            var dblist = context.idealweightDatabase.Where(ee => ee.EmailLogin == User.Identity.Name).Include(c => c.gender).ToList(); 
 
             return View(dblist); 
         }
@@ -76,8 +76,19 @@ namespace addingFieldsLogin.Controllers
             }; 
             return View("IdealWeightView",Vm); 
         }
-        
 
+        public ActionResult delete(int id)
+        {
+            var fromdb = context.idealweightDatabase.SingleOrDefault(c => c.id == id);
+            if (fromdb == null)
+            {
+                return HttpNotFound();
+            }
+            context.idealweightDatabase.Remove(fromdb);
+            context.SaveChanges();
+
+            return RedirectToAction("ListIdealWeight", "IdealWeight");
+        }
 
     }
 }

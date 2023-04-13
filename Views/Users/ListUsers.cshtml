@@ -17,97 +17,121 @@
     th {
         font-size: 20px;
     }
+
+    td, th {
+        background-color: silver;
+    }
 </style>
-<h2>User log </h2>
-<table id="CalorieTable" class="table table-bordered">
+<h2 style="color:white;">User log </h2>
+
+<table  class="table table-bordered table-condensed">
 
     <thead>
         <tr>
             <th>User Email</th>
             <th>Log Date</th>
+            <th>Log Time</th>
+            <th>Age</th>
             <th>Height</th>
             <th>Weight</th>
-            <th>Age</th>
+            <th>Delete</th>
         </tr>
     </thead>
-
-    @*@foreach (var c in Model)
+    <tbody>
+        @foreach (var c in Model)
         {
-            if (User.Identity.Name == c.EmailLogin)
-            {
-                <tbody>
-                    <tr>
-                        <td>@Html.ActionLink(c.EmailLogin, "UserDetails", "Users", new { id = c.id }, null)</td>
-                        <td>@c.log.ToShortDateString()</td>
-                        <td>@c.log.ToShortTimeString()</td>
-                        <td>@c.age</td>
-                        <td>@c.height <b>cm</b></td>
-                        <td>@c.weight <b>kg</b></td>
-                    </tr>
-                </tbody>
-            }
-        }*@
+            <tr>
+                <td>@c.EmailLogin</td>
+                <td>@c.log.ToShortDateString()</td>
+                <td>@c.log.ToShortTimeString()</td>
+                <td>@c.age</td>
+                <td>@c.height <b>cm</b></td>
+                <td>@c.weight <b>kg</b></td>
+                <td>@Html.ActionLink("delete","delete","Users",new {id = c.id },null) </td>
+            </tr>
+        }
+    </tbody>
 
-    @*
-        "columns": [
-            { 'data': 'EmailLogin' },
-            { 'data': 'log' },
-            { 'data': 'height' },
-            { 'data': 'weight' },
-            { 'data': 'age' }
-            ],
-    *@
+</table>
+
+<table id="maindiv" class="table table-bordered table-condensed" style="display:none;">
+
+    <thead>
+        <tr>
+            <th>User Email</th>
+            <th>Log Date</th>
+            <th>Log Time</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th>Weight</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+                    {
+            <tr>
+                <td>@c.EmailLogin</td>
+                <td>@c.log.ToShortDateString()</td>
+                <td>@c.log.ToShortTimeString()</td>
+                <td>@c.age</td>
+                <td>@c.height <b>cm</b></td>
+                <td>@c.weight <b>kg</b></td>
+            </tr>
+        }
+    </tbody>
+
 </table>
 
 @section scripts{
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#CalorieTable').DataTable({
-                "ajax": {
-                    "url": '/Users/GetData',
-                    "type": 'GET',
-                    "dataType": 'json',
-                },
-                "columns": [
-                    { 'data': 'EmailLogin' },
-                    { 'data': 'log' },
-                    { 'data': 'height' },
-                    { 'data': 'weight' },
-                    { 'data': 'age' }
-                ],
-
-                "dom": 'Bfrtip',
-                "buttons": [
-                    {
-                        extend: 'copy',
-                        className: 'btn btn-primary',
-                        text: '<i class="far fa-copy"></i> Copy'
-                    },
-                    {
-                        extend: 'excel',
-                        className: 'btn btn-dark rounded-0',
-                        text: '<i class="far fa-file-excel"></i> Excel'
-                    },
-                    {
-                        extend: 'pdf',
-                        className: 'btn btn-dark rounded-0',
-                        text: '<i class="far fa-file-pdf"></i> Pdf'
-                    },
-                    {
-                        extend: 'csv',
-                        className: 'btn btn-dark rounded-0',
-                        text: '<i class="fas fa-file-csv"></i> CSV'
-                    },
-                    {
-                        extend: 'print',
-                        className: 'btn btn-dark rounded-0',
-                        text: '<i class="fas fa-print"></i> Print'
-                    }
+            $('#maindiv').DataTable({                            //Remember to change the table name or it wont work //
+                        paging: true,
+                "info": false,
+                searching: false,
+                dom: 'Bfrtip',
+                buttons: [
+                    { extend: 'copy', className: 'btn btn-secondary glyphicon glyphicon-duplicate' },
+                    { extend: 'csv', className: 'btn btn-primary glyphicon glyphicon-save-file' },
+                    { extend: 'excel', className: 'btn btn-success glyphicon glyphicon-list-alt' },
+                    { extend: 'pdf', className: 'btn btn-danger glyphicon glyphicon-file' },
+                    { extend: 'print', className: 'btn btn-warning glyphicon glyphicon-print' }
                 ]
             });
-        });
+                    });
     </script>
 
 
 }
+
+
+
+
+
+@*@foreach (var c in Model)
+    {
+        if (User.Identity.Name == c.EmailLogin)
+        {
+            <tbody>
+                <tr>
+                    <td>@Html.ActionLink(c.EmailLogin, "UserDetails", "Users", new { id = c.id }, null)</td>
+                    <td>@c.log.ToShortDateString()</td>
+                    <td>@c.log.ToShortTimeString()</td>
+                    <td>@c.age</td>
+                    <td>@c.height <b>cm</b></td>
+                    <td>@c.weight <b>kg</b></td>
+                </tr>
+            </tbody>
+        }
+    }*@
+
+@*
+    "columns": [
+        { 'data': 'EmailLogin' },
+        { 'data': 'log' },
+        { 'data': 'height' },
+        { 'data': 'weight' },
+        { 'data': 'age' }
+        ],
+*@

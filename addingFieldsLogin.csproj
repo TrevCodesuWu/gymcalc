@@ -474,17 +474,17 @@
     <Content Include="Views\Gym\FormData.cshtml" />
     <Content Include="Views\Users\Calcform.cshtml" />
     <Content Include="Views\Users\ListUsers.cshtml" />
-    <Content Include="Views\Calorie\ListCUsers.cshtml" />
     <Content Include="Views\Calorie\CalcCform.cshtml" />
     <Content Include="Views\Home\CalculatorHome.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\Home\MainHome.cshtml" />
-    <Content Include="Views\IdealWeight\ListIdealWeight.cshtml" />
     <Content Include="Views\IdealWeight\IdealWeightform.cshtml" />
     <Content Include="Views\Home\testing.cshtml" />
     <Content Include="Views\Users\BMIview.cshtml" />
     <Content Include="Views\IdealWeight\IdealWeightView.cshtml" />
     <Content Include="Views\Calorie\CalorieView.cshtml" />
+    <Content Include="Views\Calorie\ListCUsers.cshtml" />
+    <Content Include="Views\IdealWeight\ListIdealWeight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,7 +23,7 @@ namespace addingFieldsLogin.Controllers
         }
          public ActionResult ListUsers()
         {
-            var list = context.userDatabase.Include(cc => cc.gender).ToList(); 
+            var list = context.userDatabase.Where(rr => rr.EmailLogin == User.Identity.Name).Include(cc => cc.gender).ToList(); 
 
             return View(list); 
         }
@@ -53,6 +53,7 @@ namespace addingFieldsLogin.Controllers
         } */ 
         public ActionResult Calcform()
         {
+
             var vm = new UserGenderViewModel
             {
                 genderList = context.genderDatabase.ToList(),
@@ -120,6 +121,19 @@ namespace addingFieldsLogin.Controllers
             // return RedirectToAction("ListUsers", "Users");  
         }
 
+        public ActionResult delete(int id)
+        {
+            var fromdb = context.userDatabase.SingleOrDefault(c => c.id == id);
+            if (fromdb == null)
+            {
+                return HttpNotFound();
+            }
+            context.userDatabase.Remove(fromdb);
+            context.SaveChanges();
+
+            return RedirectToAction("ListUsers", "Users");
+        }
+        /*
         public ActionResult GetData()
         {
             var listUsers = context.userDatabase.Where(c => c.EmailLogin == User.Identity.Name).ToList(); 
@@ -127,6 +141,6 @@ namespace addingFieldsLogin.Controllers
 
             return Json(new { data = listUsers}, JsonRequestBehavior.AllowGet);
         }
-
+        */ 
     }
 }

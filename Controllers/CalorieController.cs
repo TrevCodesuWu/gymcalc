@@ -17,14 +17,14 @@ namespace addingFieldsLogin.Controllers
         public CalorieController()
         {
             context = new ApplicationDbContext();
-        }
+        } 
         protected override void Dispose(bool disposing)
         {
             context.Dispose();
         }
         public ActionResult ListCUsers()
         {
-            var list = context.calorieDatabase.Include(cc => cc.gender).Include(dd => dd.useractivity).ToList();
+            var list = context.calorieDatabase.Where(ee => ee.EmailLogin == User.Identity.Name).Include(cc => cc.gender).Include(dd => dd.useractivity).ToList();
 
             return View(list);
         }
@@ -39,7 +39,7 @@ namespace addingFieldsLogin.Controllers
             return View(vm);
         }
 
-        
+      
         [HttpPost]
         public ActionResult formsubmit(CalorieUser calorieuser)
         {
@@ -160,6 +160,7 @@ namespace addingFieldsLogin.Controllers
             };
 
             return View("CalorieView", Vm);
+
             // return RedirectToAction("ListUsers", "Users");  
         }
         /*
@@ -170,6 +171,17 @@ namespace addingFieldsLogin.Controllers
 5	Active : exercise everyday/intense exercise 3-4 times/week
 6	Very Active : intense exercise 6-7 times/week
          */
+        public ActionResult delete(int id)
+        {
+            var fromdb = context.calorieDatabase.SingleOrDefault(c => c.id == id); 
+            if(fromdb == null)
+            {
+                return HttpNotFound(); 
+            }
+            context.calorieDatabase.Remove(fromdb);
+            context.SaveChanges();
 
+            return RedirectToAction("ListCUsers","Calorie"); 
+        }
     }
 }
