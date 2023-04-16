@@ -19,12 +19,12 @@
     </style>
 </head>
 <body>
-    <h2>BMI-Calculator</h2>
+    <h2>Calorie Calculator</h2>
 
     @using (Html.BeginForm("formsubmit", "Calorie"))
     {
 
-        @Html.ValidationSummary()
+        @Html.ValidationSummary(true,"Please fill in the required fields")
         <div class="form-group">
             @Html.LabelFor(c => c.calorieuser.age)
             @Html.TextBoxFor(c => c.calorieuser.age, new { @class = "form-control" })
@@ -46,9 +46,12 @@
             @Html.DropDownListFor(c => c.calorieuser.UserActivityId, new SelectList(Model.activitylist, "id", "Activity"), "Select Active Level", new { @class = "form-control" })
         </div>
 
+        @Html.AntiForgeryToken()
         <button class="btn btn-primary" type="submit">Calculate</button>
 
     }
-
+    @section scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 </body>
 </html>

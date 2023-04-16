@@ -39,7 +39,7 @@ namespace addingFieldsLogin.Controllers
             return View(vm);
         }
 
-      
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult formsubmit(CalorieUser calorieuser)
         {
@@ -52,7 +52,7 @@ namespace addingFieldsLogin.Controllers
                     calorieuser = calorieuser,
                     activitylist = context.activityDatabase.ToList()
                 };
-                return View("Calcform", vm);
+                return View("CalcCform", vm);
             }
             calorieuser.log = DateTime.Now;
             calorieuser.EmailLogin = User.Identity.Name;

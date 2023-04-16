@@ -25,6 +25,7 @@ namespace addingFieldsLogin.Models
         public int age { get; set; } //asking user 
         public Gender gender { get; set; } // nav prop
         [Required]
+        [Display(Name ="Select Gender")]
         public int GenderId { get; set; } // foreign key 
 
 

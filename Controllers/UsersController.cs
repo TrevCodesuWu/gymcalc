@@ -63,6 +63,7 @@ namespace addingFieldsLogin.Controllers
             return View(vm); 
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult formsubmit(User user)
         {

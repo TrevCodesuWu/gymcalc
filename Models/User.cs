@@ -24,6 +24,7 @@ namespace addingFieldsLogin.Models
         [Range(1,120,ErrorMessage ="Please choose a realistic age")]
         public int age { get; set; } //asking user 
         public Gender gender { get; set; } // nav prop
+        [Display(Name ="Select Gender")]
         [Required]
         public int GenderId { get; set; } // foreign key 
 
