@@ -28,22 +28,31 @@
         <div class="form-group">
             @Html.LabelFor(c => c.calorieuser.age)
             @Html.TextBoxFor(c => c.calorieuser.age, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.calorieuser.age)
         </div>
         <div class="form-group">
             @Html.LabelFor(c => c.calorieuser.weight)
             @Html.TextBoxFor(c => c.calorieuser.weight, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.calorieuser.weight)
+
         </div>
         <div class="form-group">
             @Html.LabelFor(c => c.calorieuser.height)
             @Html.TextBoxFor(c => c.calorieuser.height, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.calorieuser.height)
+
         </div>
         <div class="form-group">
             @Html.LabelFor(c => c.calorieuser.GenderId)
             @Html.DropDownListFor(c => c.calorieuser.GenderId, new SelectList(Model.genderList, "id", "gender"), "Select Gender", new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.calorieuser.GenderId)
+
         </div>
         <div class="form-group">
             @Html.LabelFor(c => c.calorieuser.UserActivityId)
             @Html.DropDownListFor(c => c.calorieuser.UserActivityId, new SelectList(Model.activitylist, "id", "Activity"), "Select Active Level", new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.calorieuser.UserActivityId)
+
         </div>
 
         @Html.AntiForgeryToken()
