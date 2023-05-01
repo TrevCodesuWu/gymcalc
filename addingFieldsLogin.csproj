@@ -213,6 +213,10 @@
     <Compile Include="Migrations\202304011301552_addedmodelidealweight.Designer.cs">
       <DependentUpon>202304011301552_addedmodelidealweight.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305011451115_seedRoles.cs" />
+    <Compile Include="Migrations\202305011451115_seedRoles.Designer.cs">
+      <DependentUpon>202305011451115_seedRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalorieUser.cs" />
@@ -485,6 +489,8 @@
     <Content Include="Views\Calorie\CalorieView.cshtml" />
     <Content Include="Views\Calorie\ListCUsers.cshtml" />
     <Content Include="Views\IdealWeight\ListIdealWeight.cshtml" />
+    <Content Include="Views\Home\AdminHome.cshtml" />
+    <Content Include="Views\Home\TrainerHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -529,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304011301552_addedmodelidealweight.resx">
       <DependentUpon>202304011301552_addedmodelidealweight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305011451115_seedRoles.resx">
+      <DependentUpon>202305011451115_seedRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -19,9 +19,21 @@ namespace addingFieldsLogin.Controllers
 
             return View(); 
         }
-        public ActionResult Index()
+        public ActionResult Index() // This is the route config view that it always loads to Home/Index
         {
-            return View();
+            if (User.IsInRole("AdminRole"))
+            {
+                return View("AdminHome"); 
+
+            }else if (User.IsInRole("TrainerRole"))
+            {
+                return View("TrainerHome"); 
+            }
+            else {
+
+                return View();
+            }
+
         }
         public ActionResult Result() // This is the view for the message box in the calculator home page 
         {

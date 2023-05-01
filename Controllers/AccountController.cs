@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using addingFieldsLogin.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace addingFieldsLogin.Controllers
 {
@@ -160,6 +161,14 @@ namespace addingFieldsLogin.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    /*
+                     // Dont forget to name the Role before running the code 
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole("AdminRole"));
+                    await UserManager.AddToRoleAsync(user.Id, "AdminRole");
+                     */
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
